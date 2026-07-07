@@ -1,0 +1,37 @@
+{
+  "name": "cosmetics-store-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "vercel-build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@reduxjs/toolkit": "^1.9.7",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "axios": "^1.13.2",
+    "chart.js": "^4.5.1",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "^18.3.1",
+    "react-error-boundary": "^6.1.0",
+    "react-hook-form": "^7.71.0",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "^4.11.0",
+    "react-redux": "^8.1.3",
+    "react-router-dom": "^6.30.3",
+    "react-toastify": "^11.0.5",
+    "swiper": "^10.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.4",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.4.11"
+  }
+}

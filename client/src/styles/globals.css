@@ -1,0 +1,103 @@
+/* Reset and base styles for mobile scrolling */
+
+/* Remove any forced overflow settings */
+html, body {
+  overflow: visible !important;
+}
+
+/* Ensure body is scrollable on mobile */
+body.is-mobile {
+  position: relative !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Safe areas for mobile devices */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Prevent horizontal scrolling but allow vertical */
+html, body {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Mobile-first responsive typography */
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Touch-friendly button sizing */
+.mobile-tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Smooth scrolling - only for desktop */
+@media (min-width: 769px) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* On mobile, disable smooth scroll for instant response */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Prevent horizontal overflow in containers */
+.container-fixed {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Fix for iOS Safari momentum scrolling */
+.ios-scroll-fix {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+/* Ensure all content containers allow natural flow */
+.content-container {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Critical: Make sure main content area doesn't restrict scrolling */
+main > div {
+  width: 100%;
+  min-height: calc(100vh - 200px); /* Adjust based on your header/footer height */
+  overflow: visible !important;
+}

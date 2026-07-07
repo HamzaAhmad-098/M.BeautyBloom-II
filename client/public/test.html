@@ -1,0 +1,26 @@
+<!-- Create client/public/test.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <style>
+        body { font-family: Arial; padding: 40px; }
+        button { padding: 10px 20px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Static Test Page</h1>
+    <p>If you see this, static files are working.</p>
+    <button onclick="alert('JavaScript works!')">Test JS</button>
+    <div id="react-test"></div>
+    
+    <script type="module">
+        // Simple React-like test
+        const testDiv = document.getElementById('react-test');
+        if (testDiv) {
+            testDiv.innerHTML = '<h3 style="color: green">✅ JavaScript is working</h3>';
+            console.log('Test script executed');
+        }
+    </script>
+</body>
+</html>

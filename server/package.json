@@ -1,0 +1,55 @@
+{
+  "name": "cosmetics-store-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Cosmetics E-Commerce Store",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "seed": "node src/seeder.js",
+    "seed:destroy": "node src/seeder.js -d"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.41.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^7.1.5",
+    "form-data": "^4.0.5",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^7.6.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "resend": "^6.8.0",
+    "streamifier": "^0.1.1",
+    "stripe": "^14.16.0",
+    "uploadcare-node": "^0.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "ecommerce",
+    "cosmetics",
+    "beauty",
+    "shopping",
+    "express",
+    "mongodb"
+  ],
+  "author": "Cosmetics Store",
+  "license": "MIT"
+}
