@@ -58,11 +58,6 @@ app.use((req, res, next) => {
     return res.redirect(301, `https://www.mbeautybloom.shop${req.originalUrl}`);
   }
   
-  // Redirect www to root (matches Render's canonical domain)
-  if (host === 'www.mbeautybloom.shop') {
-    return res.redirect(301, `https://mbeautybloom.shop${req.originalUrl}`);
-  }
-  
   next();
 });
 // Security middleware
