@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../common/Navbar';
 import Footer from '../common/Footer';
 import MobileNavigation from '../layout/MobileNavigation';
+import WhatsAppButton from '../common/WhatsAppButton';
 import { Toaster } from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 
@@ -50,7 +51,9 @@ const Layout = () => {
       </main>
       
       <Footer />
-      
+
+      <WhatsAppButton />
+
       <Toaster 
         position={isMobile ? "top-center" : "top-right"}
         toastOptions={{

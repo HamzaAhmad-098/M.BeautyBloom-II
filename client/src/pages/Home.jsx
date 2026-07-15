@@ -1,6 +1,23 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+const categories = [
+  { icon: '💐', name: 'Rose Bouquets', category: 'rose-bouquets' },
+  { icon: '💵', name: 'Money Bouquets', category: 'money-bouquets' },
+  { icon: '🍰', name: 'Cake Bouquets', category: 'cake-bouquets' },
+  { icon: '🍫', name: 'Chocolate Boxes', category: 'chocolate-boxes' },
+  { icon: '🧸', name: 'Teddy & Plush', category: 'teddy-plush' },
+  { icon: '👜', name: 'Gift Bags', category: 'gift-bags' },
+  { icon: '📖', name: 'Nikkah Booklets', category: 'nikkah-booklets' },
+  { icon: '🎁', name: 'Eid & Occasion Boxes', category: 'eid-boxes' },
+];
+
+const features = [
+  { icon: '🎀', title: 'Handmade with Love', desc: 'Every bouquet & box crafted by hand, just for you' },
+  { icon: '🚴', title: 'Fast Local Delivery', desc: 'Same-day delivery across the city' },
+  { icon: '💬', title: 'Order on WhatsApp', desc: 'Chat with us directly to customize your gift' },
+];
+
 const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -11,46 +28,63 @@ const Home = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  const whatsappUrl = `https://wa.me/923191204014?text=${encodeURIComponent('Hi! I want to order a gift from Beauty Bloom Gift Center 🎁')}`;
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white animate-fade-in">
+    <div className="min-h-screen bg-[#fdf9ec] animate-fade-in overflow-hidden">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-primary-500 to-primary-700 text-white py-12 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate-scale-in">
-            M.BeautyBloom
+      <div className="relative bg-gradient-to-br from-ink-900 via-ink-800 to-emerald-600 text-white py-16 sm:py-28 overflow-hidden">
+        <div className="gift-blob w-72 h-72 bg-primary-400 top-[-40px] left-[-40px]" />
+        <div className="gift-blob w-96 h-96 bg-emerald-500 bottom-[-60px] right-[-60px]" />
+
+        <div className="relative max-w-5xl mx-auto px-4 text-center">
+          <span className="inline-block glass-gold text-primary-800 font-semibold text-xs sm:text-sm tracking-wide px-4 py-1.5 rounded-full mb-5 animate-fade-in">
+            🎁 Handcrafted Gifts &middot; Made With Love
+          </span>
+          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold mb-5 animate-scale-in">
+            <span className="text-gold-gradient">Beauty Bloom</span>
+            <br />
+            <span className="text-2xl sm:text-4xl font-medium text-white/90">Gift Center</span>
           </h1>
-          <p className="text-lg sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
-            Discover the finest beauty products for your skincare, makeup, and haircare needs
+          <p className="text-base sm:text-xl mb-8 sm:mb-10 max-w-xl mx-auto text-white/80 px-2">
+            Money bouquets, rose bouquets, cake bouquets, chocolate boxes & personalized gifts — crafted by hand for every occasion.
           </p>
-          <Link
-            to="/shop"
-            className="inline-block bg-white text-primary-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 active:scale-95 mobile-tap-target animate-float"
-          >
-            Shop Now
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              to="/shop"
+              className="clay-btn inline-block text-ink-900 font-bold text-base sm:text-lg px-8 py-4 mobile-tap-target"
+            >
+              Explore Gifts
+            </Link>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 glass text-white font-semibold text-base sm:text-lg px-7 py-4 rounded-full hover:bg-white/20 transition-all duration-300 mobile-tap-target"
+            >
+              <svg viewBox="0 0 32 32" width="22" height="22" fill="#25D366"><path d="M16.004 3C9.375 3 4 8.373 4 15c0 2.34.65 4.53 1.78 6.4L4 29l7.78-1.75A11.9 11.9 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3z"/></svg>
+              Order on WhatsApp
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Features */}
-      <div className="py-12 sm:py-16 px-4">
+      <div className="py-14 sm:py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-800">
-            Why Choose Our Store?
+          <h2 className="font-display text-2xl sm:text-4xl font-bold text-center mb-10 sm:mb-14 text-ink-800">
+            Why Gift With Us?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-            {[
-              { icon: '🚚', title: 'Free Shipping', desc: 'On orders above Rs. 2000' },
-              { icon: '💯', title: '100% Authentic', desc: 'Guaranteed genuine products' },
-              { icon: '📞', title: '24/7 Support', desc: 'Dedicated customer service' },
-            ].map((feature, index) => (
-              <div 
-                key={index} 
-                className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300 animate-fade-in"
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="clay p-8 text-center hover:-translate-y-1 transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="text-primary-500 text-4xl mb-4 animate-bounce-slow">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.desc}</p>
+                <div className="text-4xl mb-4 animate-float">{feature.icon}</div>
+                <h3 className="font-display text-xl font-bold mb-2 text-ink-800">{feature.title}</h3>
+                <p className="text-ink-400">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -58,25 +92,22 @@ const Home = () => {
       </div>
 
       {/* Categories */}
-      <div className="py-12 sm:py-16 bg-gray-50 px-4">
+      <div className="py-14 sm:py-20 bg-gradient-to-b from-primary-50 to-white px-4">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-800">
+          <h2 className="font-display text-2xl sm:text-4xl font-bold text-center mb-3 text-ink-800">
             Shop by Category
           </h2>
+          <p className="text-center text-ink-400 mb-10 sm:mb-14">Handpicked gifts for every relationship & occasion</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-            {[
-              { icon: '🧴', name: 'Skincare', category: 'skincare' },
-              { icon: '💄', name: 'Makeup', category: 'makeup' },
-              { icon: '💇‍♀️', name: 'Haircare', category: 'haircare' },
-              { icon: '🌸', name: 'Fragrance', category: 'fragrance' },
-            ].map((cat, index) => (
+            {categories.map((cat, index) => (
               <Link
                 key={cat.category}
                 to={`/shop?category=${cat.category}`}
-                className="bg-white rounded-lg shadow-md p-4 sm:p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 mobile-tap-target"
+                className="glass-gold rounded-3xl p-5 sm:p-7 text-center hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 active:scale-95 mobile-tap-target animate-fade-in"
+                style={{ animationDelay: `${index * 60}ms` }}
               >
                 <div className="text-3xl sm:text-4xl mb-2">{cat.icon}</div>
-                <h3 className="font-bold text-sm sm:text-base">{cat.name}</h3>
+                <h3 className="font-semibold text-sm sm:text-base text-ink-800">{cat.name}</h3>
               </Link>
             ))}
           </div>
@@ -84,57 +115,52 @@ const Home = () => {
       </div>
 
       {/* Testimonials */}
-      <div className="py-12 sm:py-16 px-4">
+      <div className="py-14 sm:py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-800">
+          <h2 className="font-display text-2xl sm:text-4xl font-bold text-center mb-10 sm:mb-14 text-ink-800">
             What Our Customers Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {[
-              { text: "Best cosmetics store in Pakistan! The products are genuine and delivery is super fast.", author: "Sarah K." },
-              { text: "Amazing collection and excellent customer service. Highly recommended!", author: "Ayesha M." },
-              { text: "The quality of products is exceptional. Will definitely shop again!", author: "Fatima R." },
+              { text: "The money bouquet I ordered for my sister's eidi was stunning — better than the pictures!", author: 'Ayesha K.' },
+              { text: 'Nikkah booklet was so personalized and beautifully made. Everyone at the wedding loved it.', author: 'Hamna R.' },
+              { text: 'Ordered a cake bouquet last minute via WhatsApp and they delivered same day. Amazing service!', author: 'Bilal S.' },
             ].map((testimonial, index) => (
-              <div 
-                key={index} 
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in"
+              <div
+                key={index}
+                className="clay p-7 hover:-translate-y-1 transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="flex items-center mb-4">
-                  <span className="text-yellow-400 text-xl">★★★★★</span>
+                  <span className="text-primary-500 text-xl">★★★★★</span>
                 </div>
-                <p className="text-gray-700 mb-4 text-sm sm:text-base">
-                  "{testimonial.text}"
-                </p>
-                <p className="font-bold text-gray-900">- {testimonial.author}</p>
+                <p className="text-ink-700 mb-4 text-sm sm:text-base italic">"{testimonial.text}"</p>
+                <p className="font-bold text-ink-900">- {testimonial.author}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Newsletter Section */}
-      <div className="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-12 px-4">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-            Stay Updated
+      {/* WhatsApp CTA Section */}
+      <div className="relative bg-gradient-to-r from-emerald-600 to-ink-900 text-white py-14 sm:py-16 px-4 overflow-hidden">
+        <div className="gift-blob w-80 h-80 bg-primary-400 top-[-50px] right-[10%]" />
+        <div className="relative max-w-2xl mx-auto text-center">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold mb-4">
+            Have Something Special in Mind?
           </h2>
-          <p className="mb-6 text-pink-100">
-            Subscribe to our newsletter for exclusive offers and beauty tips
+          <p className="mb-8 text-white/80">
+            Message us on WhatsApp for custom gift requests, bulk orders, or same-day delivery.
           </p>
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white text-sm sm:text-base"
-            />
-            <button
-              type="submit"
-              className="bg-white text-pink-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors mobile-tap-target"
-            >
-              Subscribe
-            </button>
-          </form>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="clay-btn inline-flex items-center gap-2 text-ink-900 font-bold px-8 py-4 mobile-tap-target"
+          >
+            <svg viewBox="0 0 32 32" width="22" height="22" fill="#128C4A"><path d="M16.004 3C9.375 3 4 8.373 4 15c0 2.34.65 4.53 1.78 6.4L4 29l7.78-1.75A11.9 11.9 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3z"/></svg>
+            Chat With Us Now
+          </a>
         </div>
       </div>
     </div>

@@ -1,6 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --gift-gold: #d19a24;
+  --gift-gold-light: #f4e09c;
+  --gift-emerald: #0f6b53;
+  --gift-ink: #171c22;
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ============ Glassmorphism ============ */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(23, 28, 34, 0.08);
+}
+.glass-dark {
+  background: rgba(23, 28, 34, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+.glass-gold {
+  background: linear-gradient(135deg, rgba(244, 224, 156, 0.35), rgba(255, 255, 255, 0.45));
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(209, 154, 36, 0.35);
+  box-shadow: 0 8px 30px rgba(209, 154, 36, 0.18);
+}
+
+/* ============ Claymorphism ============ */
+.clay {
+  background: #fdf9ec;
+  border-radius: 28px;
+  box-shadow:
+    8px 8px 16px rgba(180, 140, 40, 0.18),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.6);
+}
+.clay-btn {
+  background: linear-gradient(145deg, #e6b94a, #c98f1e);
+  border-radius: 999px;
+  box-shadow:
+    6px 6px 14px rgba(150, 105, 20, 0.35),
+    -4px -4px 10px rgba(255, 234, 170, 0.5);
+  transition: all 0.2s ease;
+}
+.clay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    8px 8px 18px rgba(150, 105, 20, 0.4),
+    -4px -4px 10px rgba(255, 234, 170, 0.6);
+}
+.clay-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    3px 3px 8px rgba(150, 105, 20, 0.35),
+    -2px -2px 6px rgba(255, 234, 170, 0.4);
+}
+
+/* ============ WhatsApp float button ============ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 50;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #2fd66b, #1fa855);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 6px 6px 16px rgba(15, 107, 83, 0.35), -4px -4px 12px rgba(255,255,255,0.5);
+  animation: wa-pulse 2.4s ease-in-out infinite;
+}
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
+@keyframes wa-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(47, 214, 107, 0.45), 6px 6px 16px rgba(15,107,83,0.35); }
+  50% { box-shadow: 0 0 0 12px rgba(47, 214, 107, 0), 6px 6px 16px rgba(15,107,83,0.35); }
+}
+
+/* ============ Blob / gold shimmer background ============ */
+.gift-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  animation: blob-move 10s ease-in-out infinite;
+}
+@keyframes blob-move {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(30px,-20px) scale(1.1); }
+}
+.text-gold-gradient {
+  background: linear-gradient(90deg, #b57c1b, #e3b23a, #b57c1b);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-x 4s ease infinite;
+}
 
 * {
   margin: 0;
