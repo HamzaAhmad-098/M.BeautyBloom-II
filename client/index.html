@@ -181,9 +181,9 @@
         window.location.replace('https://mbeautybloom.shop' + window.location.pathname + window.location.search);
       }
       
-      // Redirect www to root (matches server-side canonical domain)
-      if (window.location.hostname === 'www.mbeautybloom.shop') {
-        window.location.replace('https://mbeautybloom.shop' + window.location.pathname + window.location.search);
+      // Redirect apex to www (matches Vercel's canonical production domain)
+      if (window.location.hostname === 'mbeautybloom.shop') {
+        window.location.replace('https://www.mbeautybloom.shop' + window.location.pathname + window.location.search);
       }
     </script>
   </body>
