@@ -28,16 +28,16 @@ const Navbar = () => {
               className="flex items-center space-x-3 group"
             >
               {/* Enhanced Logo Container */}
-              <div className="relative w-12 h-12 rounded-full overflow-hidden transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-pink-200">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-primary-200">
                 {/* Background shimmer effect while loading */}
                 {!logoLoaded && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-pink-100 to-purple-100 animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-100 to-primary-200 animate-pulse"></div>
                 )}
                 
                 {/* Logo Image - Full Size */}
                 <img
                   src="/logo.jpeg"
-                  alt="M.BeautyBloom - Premium Beauty Store"
+                  alt="Mani Gift Center by Beauty Bloom"
                   className={`w-full h-full object-cover transition-opacity duration-300 ${logoLoaded ? 'opacity-100' : 'opacity-0'}`}
                   onLoad={() => setLogoLoaded(true)}
                   onError={(e) => {
@@ -49,22 +49,22 @@ const Navbar = () => {
                 />
                 
                 {/* Hover Overlay Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-emerald-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {/* Decorative Ring */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-pink-300 rounded-full transition-all duration-300"></div>
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary-300 rounded-full transition-all duration-300"></div>
               </div>
 
               {/* Website Name and Tagline */}
               <div className="hidden sm:block transition-all duration-300 group-hover:translate-x-1">
-                <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:to-pink-600 transition-all duration-500">
-                  M.BeautyBloom
+                <h1 className="text-xl sm:text-2xl font-bold font-display bg-gradient-to-r from-primary-600 to-emerald-600 bg-clip-text text-transparent group-hover:from-emerald-600 group-hover:to-primary-600 transition-all duration-500">
+                  Mani Gift Center
                 </h1>
                 <div className="flex items-center space-x-1">
-                  <p className="text-xs text-gray-500 -mt-1 group-hover:text-pink-500 transition-colors duration-300">
-                    Premium Beauty Store
+                  <p className="text-xs text-gray-500 -mt-1 group-hover:text-primary-500 transition-colors duration-300">
+                    by Beauty Bloom
                   </p>
-                  <span className="text-xs text-purple-400 group-hover:animate-pulse">✨</span>
+                  <span className="text-xs text-primary-400 group-hover:animate-pulse">🎁</span>
                 </div>
               </div>
             </Link>
@@ -169,7 +169,7 @@ const Navbar = () => {
               <div className="w-6 h-6 rounded-full overflow-hidden">
                 <img 
                   src="/logo.jpeg" 
-                  alt="M.BeautyBloom" 
+                  alt="Mani Gift Center" 
                   className="w-full h-full object-cover"
                 />
               </div>

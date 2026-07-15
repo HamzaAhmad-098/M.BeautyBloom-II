@@ -28,7 +28,7 @@ const Home = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const whatsappUrl = `https://wa.me/923191204014?text=${encodeURIComponent('Hi! I want to order a gift from Beauty Bloom Gift Center 🎁')}`;
+  const whatsappUrl = `https://wa.me/923214203402?text=${encodeURIComponent('Hi! I want to order a gift from Mani Gift Center 🎁')}`;
 
   return (
     <div className="min-h-screen bg-[#fdf9ec] animate-fade-in overflow-hidden">
@@ -42,9 +42,9 @@ const Home = () => {
             🎁 Handcrafted Gifts &middot; Made With Love
           </span>
           <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold mb-5 animate-scale-in">
-            <span className="text-gold-gradient">Beauty Bloom</span>
+            <span className="text-gold-gradient">Mani Gift Center</span>
             <br />
-            <span className="text-2xl sm:text-4xl font-medium text-white/90">Gift Center</span>
+            <span className="text-2xl sm:text-4xl font-medium text-white/90">by Beauty Bloom</span>
           </h1>
           <p className="text-base sm:text-xl mb-8 sm:mb-10 max-w-xl mx-auto text-white/80 px-2">
             Money bouquets, rose bouquets, cake bouquets, chocolate boxes & personalized gifts — crafted by hand for every occasion.

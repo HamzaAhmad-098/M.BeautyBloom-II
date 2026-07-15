@@ -70,14 +70,14 @@ const Footer = () => {
   ];
 
   const categories = [
-    { name: 'Skincare', path: '/shop?category=skincare' },
-    { name: 'Makeup', path: '/shop?category=makeup' },
-    { name: 'Haircare', path: '/shop?category=haircare' },
-    { name: 'Fragrance', path: '/shop?category=fragrance' },
+    { name: 'Rose Bouquets', path: '/shop?category=rose-bouquets' },
+    { name: 'Money Bouquets', path: '/shop?category=money-bouquets' },
+    { name: 'Cake Bouquets', path: '/shop?category=cake-bouquets' },
+    { name: 'Chocolate Boxes', path: '/shop?category=chocolate-boxes' },
   ];
 
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-6 animate-fade-in">
+    <footer className="bg-ink-900 text-white pt-12 pb-6 animate-fade-in">
       {/* Scroll to Top Button */}
       {showScrollTop && (
         <button
@@ -95,15 +95,15 @@ const Footer = () => {
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center animate-bounce-slow">
-                <span className="text-white font-bold text-2xl">💄</span>
+                <span className="text-white font-bold text-2xl">🎁</span>
               </div>
               <div>
-                <h2 className="text-2xl font-bold">M.BeautyBloom</h2>
-                <p className="text-sm text-gray-400">Premium Beauty Store</p>
+                <h2 className="text-2xl font-bold font-display">Mani Gift Center</h2>
+                <p className="text-sm text-gray-400">by Beauty Bloom</p>
               </div>
             </div>
             <p className="text-gray-400 mb-6 text-sm sm:text-base">
-              Your one-stop destination for premium cosmetics, skincare, Gift Center, Bonquet, and haircare products.
+              Handmade rose bouquets, money bouquets, cake bouquets, chocolate boxes & personalized gifts for every occasion.
             </p>
             <div className="flex space-x-4">
               <a href="https://www.instagram.com/manibhai_000?igsh=dW13M2UzdnR6ajFn" className="text-gray-400 hover:text-white transition-colors p-2">

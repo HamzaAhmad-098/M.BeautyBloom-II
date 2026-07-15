@@ -1,4 +1,4 @@
-const WhatsAppButton = ({ phone = '923191204014', message = 'Hi! I want to order a gift from Beauty Bloom Gift Center 🎁' }) => {
+const WhatsAppButton = ({ phone = '923214203402', message = 'Hi! I want to order a gift from Mani Gift Center 🎁' }) => {
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
   return (
