@@ -124,7 +124,7 @@ useEffect(() => {
     }
     
     dispatch(addToCart({ 
-      productId: product._id, 
+      product,
       quantity,
       variant: selectedVariant 
     }));

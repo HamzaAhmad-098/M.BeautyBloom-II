@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch(addToCart({ productId: product._id, quantity: 1 }));
+    dispatch(addToCart({ product, quantity: 1 }));
   };
 
   const price = product.discountPrice > 0 ? product.discountPrice : product.price;

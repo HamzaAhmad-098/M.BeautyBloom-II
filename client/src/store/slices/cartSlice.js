@@ -234,11 +234,9 @@ export const addToCart = (productData) => (dispatch, getState) => {
         quantity: productData.quantity || 1 
       }));
     } else {
-      // If product not found in state, still add with minimal data
-      dispatch(addItem({ 
-        productId: productData.productId, 
-        quantity: productData.quantity || 1 
-      }));
+      // Product not found locally — don't fabricate a fake placeholder item.
+      console.error('addToCart: product not found in state for id', productData.productId);
+      toast.error('Could not add item — please refresh and try again');
     }
   } else {
     // If we have full product object
