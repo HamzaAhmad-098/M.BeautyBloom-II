@@ -132,8 +132,18 @@ useEffect(() => {
   };
 
   const handleBuyNow = () => {
-    handleAddToCart();
-    navigate('/cart');
+    if (product.stock < quantity) {
+      toast.error('Not enough stock available');
+      return;
+    }
+    dispatch(addToCart({
+      product,
+      quantity,
+      variant: selectedVariant
+    }));
+    // Buy Now skips the cart page and goes straight to checkout,
+    // where the order is saved and also sent to WhatsApp.
+    navigate('/checkout');
   };
 
   const handleQuantityChange = (type) => {

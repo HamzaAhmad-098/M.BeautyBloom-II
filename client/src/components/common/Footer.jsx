@@ -98,7 +98,7 @@ const Footer = () => {
                 <span className="text-white font-bold text-2xl">🎁</span>
               </div>
               <div>
-                <h2 className="text-2xl font-bold font-display">Mani Gift Center</h2>
+                <h2 className="text-2xl font-bold font-display">M.BeautyBloom</h2>
                 <p className="text-sm text-gray-400">by Beauty Bloom</p>
               </div>
             </div>

@@ -58,11 +58,11 @@ const Navbar = () => {
               {/* Website Name and Tagline */}
               <div className="hidden sm:block transition-all duration-300 group-hover:translate-x-1">
                 <h1 className="text-xl sm:text-2xl font-bold font-display bg-gradient-to-r from-primary-600 to-emerald-600 bg-clip-text text-transparent group-hover:from-emerald-600 group-hover:to-primary-600 transition-all duration-500">
-                  Mani Gift Center
+                  M.BeautyBloom
                 </h1>
                 <div className="flex items-center space-x-1">
                   <p className="text-xs text-gray-500 -mt-1 group-hover:text-primary-500 transition-colors duration-300">
-                    by Beauty Bloom
+                    Mani Gift Center
                   </p>
                   <span className="text-xs text-primary-400 group-hover:animate-pulse">🎁</span>
                 </div>

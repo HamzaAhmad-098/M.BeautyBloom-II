@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { FaShoppingCart, FaTruck, FaCreditCard, FaCheckCircle } from 'react-icons/fa';
 import { analytics } from '@/utils/analytics';
+import { sendOrderToWhatsApp } from '../utils/whatsappOrder';
 const Checkout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -204,11 +205,34 @@ const Checkout = () => {
       
       if (createOrder.fulfilled.match(action)) {
         const createdOrder = action.payload;
-        
+
+        // Send the same order to WhatsApp so the team can confirm it directly.
+        // The order is already safely saved in the database above.
+        try {
+          sendOrderToWhatsApp({
+            orderId: createdOrder._id || createdOrder.orderNumber,
+            items: orderItems.map((it) => ({
+              name: it.name,
+              quantity: it.quantity,
+              price: it.price,
+            })),
+            customer: {
+              name: shippingAddress.name,
+              phone: shippingAddress.phone,
+              email: shippingAddress.email,
+              address: shippingAddress.address,
+              city: shippingAddress.city,
+            },
+            total: totalPrice,
+          });
+        } catch (waError) {
+          console.error('WhatsApp order message could not be opened:', waError);
+        }
+
         // Clear cart
         dispatch(clearCartAction());
         
-        toast.success('Order placed successfully!');
+        toast.success('Order placed! Opening WhatsApp to confirm...');
         
         // Redirect to order confirmation
         navigate(`/order-confirmation/${createdOrder._id}`);

@@ -8,6 +8,7 @@ import GoogleAnalytics from './components/GoogleAnalytics';
 // Layout
 import Layout from './components/layout/Layout';
 import ScrollToTop from './components/common/ScrollToTop';
+import SplashScreen from './components/common/SplashScreen';
 
 // Auth Components
 import ProtectedRoute, { GuestRoute, VerifiedRoute, AdminRoute } from './components/common/ProtectedRoute';
@@ -60,6 +61,12 @@ function App() {
   const userInfo = useSelector(selectCurrentUser);
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const [isMobile, setIsMobile] = useState(false);
+  const [showSplash, setShowSplash] = useState(() => !sessionStorage.getItem('mbb_splash_shown'));
+
+  const handleSplashFinish = () => {
+    sessionStorage.setItem('mbb_splash_shown', '1');
+    setShowSplash(false);
+  };
 
   // Check authentication on app load
   useEffect(() => {
@@ -102,6 +109,7 @@ function App() {
 
   return (
     <>
+    {showSplash && <SplashScreen onFinish={handleSplashFinish} />}
     <GoogleAnalytics />
       {/* Scroll to top on route change */}
       <ScrollToTop />

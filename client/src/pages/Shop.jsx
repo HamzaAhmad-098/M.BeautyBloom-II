@@ -448,12 +448,15 @@ const Shop = () => {
               </div>
             ) : (
               <>
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                  {products.map((product) => (
-                    <ProductCard 
-                      key={product._id || product.id} 
-                      product={product} 
-                    />
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 animate-grid is-visible">
+                  {products.map((product, idx) => (
+                    <div
+                      key={product._id || product.id}
+                      className="shop-card-in"
+                      style={{ animationDelay: `${Math.min(idx, 11) * 45}ms` }}
+                    >
+                      <ProductCard product={product} />
+                    </div>
                   ))}
                 </div>
 
