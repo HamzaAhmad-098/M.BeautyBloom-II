@@ -174,8 +174,8 @@ const Orders = () => {
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-lg font-bold text-gray-900">
-                        Rs. {order.totalPrice?.toLocaleString() || '0'}
+                      <p className="text-sm font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full inline-block">
+                        Priced on WhatsApp
                       </p>
                       <p className="text-sm text-gray-600">{formatDate(order.createdAt)}</p>
                     </div>
@@ -196,7 +196,7 @@ const Orders = () => {
                         <h4 className="font-medium text-gray-900">{item.name || item.product?.name || 'Product'}</h4>
                         <p className="text-sm text-gray-600">Qty: {item.quantity || 0}</p>
                       </div>
-                      <p className="font-medium">Rs. {(item.price || 0).toLocaleString()}</p>
+                      <p className="text-xs text-emerald-700 font-medium">Ask on WhatsApp</p>
                     </div>
                   ))}
                   {order.orderItems?.length > 2 && (

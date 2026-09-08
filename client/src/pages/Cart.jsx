@@ -257,17 +257,12 @@ const Cart = () => {
                       )}
 
                       <div className="mt-2">
-                        <span className="font-bold text-gray-900">
-                          Rs. {(
-                            (item.price || 
-                             (item.product?.discountPrice > 0 
-                              ? item.product?.discountPrice 
-                              : item.product?.price) || 0) * (item.quantity || 1)
-                          ).toLocaleString()}
+                        <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full">
+                          💬 Ask for Price
                         </span>
                         {item.product?.discountPrice > 0 && item.product?.price && (
-                          <span className="text-xs text-gray-500 line-through ml-2">
-                            Rs. {(item.product?.price * (item.quantity || 1)).toLocaleString()}
+                          <span className="ml-2 text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-semibold">
+                            {Math.round(((item.product.price - item.product.discountPrice) / item.product.price) * 100)}% OFF
                           </span>
                         )}
                       </div>
@@ -338,38 +333,27 @@ const Cart = () => {
             <div className="bg-white rounded-xl shadow-lg p-6 sticky top-24 animate-scale-in">
               <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
 
+              {/* Order Summary — totals kept internal for WhatsApp/order logic, not shown to customer */}
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Subtotal ({itemsCount} items)</span>
-                  <span className="font-medium">Rs. {cartTotal.toLocaleString()}</span>
+                  <span className="text-gray-600">Items</span>
+                  <span className="font-medium">{itemsCount} item{itemsCount === 1 ? '' : 's'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Shipping</span>
-                  <span className="font-medium">
-                    {shippingPrice === 0 ? 'FREE' : `Rs. ${shippingPrice}`}
-                  </span>
+                  <span className="font-medium text-emerald-700">Confirmed on WhatsApp</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Tax (0%)</span>
-                  <span className="font-medium">Rs. {taxPrice.toLocaleString()}</span>
-                </div>
-                
-                {shippingPrice > 0 && cartTotal < 2000 && (
-                  <div className="p-3 bg-green-50 rounded-lg mt-3 animate-pulse">
-                    <p className="text-sm text-green-700">
-                      Add Rs. {(2000 - cartTotal).toLocaleString()} more for free shipping!
-                    </p>
-                  </div>
-                )}
               </div>
 
               <div className="border-t pt-4 mt-4">
                 <div className="flex justify-between text-lg font-bold mb-2">
                   <span>Total</span>
-                  <span className="text-primary-600">Rs. {totalPrice.toLocaleString()}</span>
+                  <span className="text-xs sm:text-sm font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full">
+                    💬 Ask for Price
+                  </span>
                 </div>
                 <p className="text-sm text-gray-500">
-                  Including all taxes and shipping
+                  Message us on WhatsApp for the final price & delivery cost
                 </p>
               </div>
               <div className="mt-6 space-y-3">

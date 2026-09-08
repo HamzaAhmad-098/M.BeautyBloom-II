@@ -2,18 +2,17 @@
 // Keep the number in one place so it's easy to update.
 export const WHATSAPP_NUMBER = '923214203402';
 
-const money = (n) => `Rs. ${Number(n || 0).toLocaleString('en-PK')}`;
-
 /**
  * Build a nicely formatted WhatsApp order message.
+ * Prices are intentionally NOT included — pricing is only shared by the
+ * team directly on WhatsApp, never shown to the customer beforehand.
  * @param {Object} params
- * @param {Array} params.items - [{ name, quantity, price, variant }]
+ * @param {Array} params.items - [{ name, quantity, variant }]
  * @param {Object} params.customer - { name, phone, email, address, city }
  * @param {String} params.orderId - optional order id/reference already saved in DB
- * @param {Number} params.total - grand total
  * @param {String} params.notes - optional customer notes
  */
-export function buildWhatsAppMessage({ items = [], customer = {}, orderId, total, notes }) {
+export function buildWhatsAppMessage({ items = [], customer = {}, orderId, notes }) {
   const lines = [];
   lines.push('🎁 *New Order — M.BeautyBloom*');
   if (orderId) lines.push(`🧾 Order Ref: *${orderId}*`);
@@ -21,22 +20,22 @@ export function buildWhatsAppMessage({ items = [], customer = {}, orderId, total
   lines.push('*Items:*');
   items.forEach((it, i) => {
     const variant = it.variant ? ` (${it.variant})` : '';
-    lines.push(`${i + 1}. ${it.name}${variant} x${it.quantity} — ${money(it.price * it.quantity)}`);
+    lines.push(`${i + 1}. ${it.name}${variant} x${it.quantity}`);
   });
   lines.push('');
-  if (typeof total === 'number') lines.push(`💰 *Total: ${money(total)}*`);
-  lines.push('');
-  lines.push('*Customer Details:*');
-  if (customer.name) lines.push(`👤 ${customer.name}`);
-  if (customer.phone) lines.push(`📞 ${customer.phone}`);
-  if (customer.email) lines.push(`✉️ ${customer.email}`);
-  if (customer.address) lines.push(`📍 ${customer.address}${customer.city ? `, ${customer.city}` : ''}`);
-  if (notes) {
+  if (customer.name || customer.phone || customer.email || customer.address) {
+    lines.push('*Customer Details:*');
+    if (customer.name) lines.push(`👤 ${customer.name}`);
+    if (customer.phone) lines.push(`📞 ${customer.phone}`);
+    if (customer.email) lines.push(`✉️ ${customer.email}`);
+    if (customer.address) lines.push(`📍 ${customer.address}${customer.city ? `, ${customer.city}` : ''}`);
     lines.push('');
-    lines.push(`📝 Note: ${notes}`);
   }
-  lines.push('');
-  lines.push('Please confirm my order, JazakAllah Khair! 🌸');
+  if (notes) {
+    lines.push(`📝 Note: ${notes}`);
+    lines.push('');
+  }
+  lines.push('What\'s the price for this article? 😊');
   return lines.join('\n');
 }
 

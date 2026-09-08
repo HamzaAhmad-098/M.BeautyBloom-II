@@ -311,7 +311,7 @@ useEffect(() => {
   };
 
   const features = [
-    { icon: <FaShippingFast />, text: 'Free Shipping', subtext: 'On orders above Rs. 2000' },
+    { icon: <FaShippingFast />, text: 'Free Shipping', subtext: 'On qualifying orders' },
     { icon: <FaShieldAlt />, text: '100% Authentic', subtext: 'Guaranteed genuine' },
     { icon: <FaUndo />, text: 'Easy Returns', subtext: '14-day return policy' },
   ];
@@ -465,24 +465,19 @@ useEffect(() => {
                 </a>
               </div>
 
-              {/* Price */}
+              {/* Price hidden from customers — off badge stays visible */}
               <div className="mb-6">
                 <div className="flex items-center space-x-3">
-                  <span className="text-4xl font-bold text-gray-900">
-                    Rs. {price?.toLocaleString()}
+                  <span className="inline-flex items-center gap-2 text-base sm:text-lg font-semibold text-emerald-700 bg-emerald-50 px-4 py-2 rounded-full">
+                    💬 Ask for Price on WhatsApp
                   </span>
                   {originalPrice && (
-                    <>
-                      <span className="text-xl text-gray-500 line-through">
-                        Rs. {originalPrice.toLocaleString()}
-                      </span>
-                      <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">
-                        {discountPercentage}% OFF
-                      </span>
-                    </>
+                    <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold">
+                      {discountPercentage}% OFF
+                    </span>
                   )}
                 </div>
-                <p className="text-sm text-gray-500 mt-2">Inclusive of all taxes</p>
+                <p className="text-sm text-gray-500 mt-2">Message us for the best price & delivery details</p>
               </div>
 
               {/* Stock Status */}
@@ -680,8 +675,8 @@ useEffect(() => {
                   <div className="bg-gray-50 p-6 rounded-lg">
                     <h4 className="font-semibold mb-3">Shipping Information</h4>
                     <ul className="space-y-2 text-gray-600">
-                      <li>• Free shipping on orders above Rs. 2000</li>
-                      <li>• Standard shipping: Rs. 200</li>
+                      <li>• Free shipping on qualifying orders</li>
+                      <li>• Affordable standard shipping available</li>
                       <li>• Delivery within 3-7 business days</li>
                       <li>• Cash on Delivery available</li>
                       <li>• Same day delivery in major cities</li>

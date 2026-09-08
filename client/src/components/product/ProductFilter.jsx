@@ -121,26 +121,7 @@ const ProductFilter = ({ filters, onFilterChange, onClearFilters, isMobile = fal
         )}
       </div>
 
-      {/* Price Range */}
-      <div className="mb-4 sm:mb-6">
-        <h4 className="font-medium text-gray-700 mb-2 text-sm sm:text-base">Price Range</h4>
-        <div className="flex space-x-2">
-          <input
-            type="number"
-            placeholder="Min"
-            value={filters.minPrice}
-            onChange={(e) => onFilterChange({ minPrice: e.target.value })}
-            className="w-1/2 px-2 py-1 sm:px-3 sm:py-2 border border-gray-300 rounded text-sm sm:text-base focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-          />
-          <input
-            type="number"
-            placeholder="Max"
-            value={filters.maxPrice}
-            onChange={(e) => onFilterChange({ maxPrice: e.target.value })}
-            className="w-1/2 px-2 py-1 sm:px-3 sm:py-2 border border-gray-300 rounded text-sm sm:text-base focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-          />
-        </div>
-      </div>
+      {/* Price Range filter hidden from customers (prices are shared via WhatsApp only) */}
 
       {/* Rating Filter */}
       <div className="mb-4 sm:mb-6">

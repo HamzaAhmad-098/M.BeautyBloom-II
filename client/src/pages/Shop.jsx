@@ -316,8 +316,6 @@ const Shop = () => {
                     className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 w-full sm:w-auto"
                   >
                     <option value="newest">Newest</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
                     <option value="rating">Highest Rated</option>
                     <option value="popular">Most Popular</option>
                   </select>

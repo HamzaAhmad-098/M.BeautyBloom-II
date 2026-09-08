@@ -49,16 +49,9 @@ const ProductCard = ({ product }) => {
         </Link>
 
         <div className="mt-3 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="text-lg font-bold text-gray-900">
-              Rs. {price.toLocaleString()}
-            </span>
-            {originalPrice && (
-              <span className="text-sm text-gray-500 line-through">
-                Rs. {originalPrice.toLocaleString()}
-              </span>
-            )}
-          </div>
+          <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full">
+            💬 Ask for Price
+          </span>
 
           <div className="flex items-center">
             <span className="text-yellow-400">★</span>

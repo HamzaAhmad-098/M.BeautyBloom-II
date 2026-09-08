@@ -180,8 +180,8 @@ const TrackOrder = () => {
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-gray-600">Total</p>
-                  <p className="text-xl font-bold">Rs. {Number(order.totalPrice).toLocaleString()}</p>
+                  <p className="text-sm text-gray-600">Order Value</p>
+                  <p className="text-sm font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full inline-block">Confirmed on WhatsApp</p>
                 </div>
               </div>
 
@@ -265,7 +265,7 @@ const TrackOrder = () => {
                       <div className="font-semibold">{item.name}</div>
                       <div className="text-sm text-gray-500">Qty: {item.quantity} {item.variant ? `• ${item.variant}` : ''}</div>
                     </div>
-                    <div className="font-semibold">Rs. {(item.price * item.quantity).toLocaleString()}</div>
+                    <div className="text-xs text-emerald-700 font-medium">Priced on WhatsApp</div>
                   </div>
                 ))}
               </div>
@@ -289,7 +289,7 @@ const TrackOrder = () => {
                 <div className="text-sm text-gray-700">
                   <div>Method: {order.paymentMethod}</div>
                   <div>Status: {order.isPaid ? `Paid • ${order.paidAt ? new Date(order.paidAt).toLocaleString() : ''}` : 'Not paid'}</div>
-                  <div className="mt-3 font-semibold">Order Total: Rs. {Number(order.totalPrice).toLocaleString()}</div>
+                  <div className="mt-3 font-semibold">Order Total: <span className="text-emerald-700">Confirmed on WhatsApp</span></div>
                 </div>
               </div>
             </div>

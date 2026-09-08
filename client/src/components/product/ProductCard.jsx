@@ -250,16 +250,11 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
         
-        {/* Price */}
+        {/* Price hidden from customers — ask on WhatsApp instead. Off badge above still shows discount. */}
         <div className="flex items-center gap-2 mb-4">
-          <span className="font-bold text-gray-900 text-lg sm:text-xl">
-            Rs. {price?.toLocaleString() || '0'}
+          <span className="text-xs sm:text-sm font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full">
+            💬 Ask for Price
           </span>
-          {originalPrice && (
-            <span className="text-sm text-gray-500 line-through">
-              Rs. {originalPrice.toLocaleString()}
-            </span>
-          )}
         </div>
         
         {/* Add to Cart Button */}

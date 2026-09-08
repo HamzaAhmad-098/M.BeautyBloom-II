@@ -203,8 +203,8 @@ const OrderConfirmation = () => {
             </div>
             
             <div className="text-center p-4 border-r border-gray-200">
-              <div className="text-2xl font-bold text-gray-900">
-                Rs. {order.totalPrice?.toLocaleString()}
+              <div className="text-sm font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full inline-block">
+                Confirmed on WhatsApp
               </div>
               <div className="text-sm text-gray-500 mt-1">Total Amount</div>
             </div>
@@ -310,11 +310,8 @@ const OrderConfirmation = () => {
                       )}
                     </div>
                     <div className="text-right">
-                      <p className="font-bold text-gray-900">
-                        Rs. {(item.price * item.quantity).toLocaleString()}
-                      </p>
-                      <p className="text-sm text-gray-600">
-                        Rs. {item.price.toLocaleString()} each
+                      <p className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-1 rounded-full inline-block">
+                        Priced on WhatsApp
                       </p>
                     </div>
                   </div>
@@ -329,23 +326,11 @@ const OrderConfirmation = () => {
             <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
               <h3 className="text-lg font-bold text-gray-900 mb-4">Order Summary</h3>
               <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Subtotal</span>
-                  <span>Rs. {order.itemsPrice?.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Shipping</span>
-                  <span>{order.shippingPrice === 0 ? 'FREE' : `Rs. ${order.shippingPrice?.toLocaleString()}`}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Tax</span>
-                  <span>Rs. {order.taxPrice?.toLocaleString()}</span>
-                </div>
                 <div className="pt-3 border-t border-gray-200">
                   <div className="flex justify-between text-lg font-bold">
                     <span>Total</span>
-                    <span className="text-primary-600">
-                      Rs. {order.totalPrice?.toLocaleString()}
+                    <span className="text-sm font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full">
+                      Confirmed on WhatsApp
                     </span>
                   </div>
                 </div>
