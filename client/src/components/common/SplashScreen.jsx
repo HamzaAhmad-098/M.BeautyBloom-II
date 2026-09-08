@@ -6,8 +6,8 @@ const SplashScreen = ({ onFinish }) => {
   const [hiding, setHiding] = useState(false);
 
   useEffect(() => {
-    const hideTimer = setTimeout(() => setHiding(true), 2100);
-    const doneTimer = setTimeout(() => onFinish?.(), 2650);
+    const hideTimer = setTimeout(() => setHiding(true), 4200);
+    const doneTimer = setTimeout(() => onFinish?.(), 4750);
     return () => {
       clearTimeout(hideTimer);
       clearTimeout(doneTimer);

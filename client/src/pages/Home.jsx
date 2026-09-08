@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Reveal from '../components/common/Reveal';
+import ProductCard from '../components/product/ProductCard';
 
 const categories = [
   { icon: '💐', name: 'Rose Bouquets', category: 'rose-bouquets' },
@@ -21,12 +23,50 @@ const features = [
 
 const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [shopProducts, setShopProducts] = useState([]);
+  const [productsLoading, setProductsLoading] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Load a handful of products to showcase right on the homepage
+  useEffect(() => {
+    const fetchHomeProducts = async () => {
+      setProductsLoading(true);
+      try {
+        const API_URL = import.meta.env.VITE_API_URL ||
+          (window.location.origin.includes('mbeautybloom.shop')
+            ? '/api'
+            : 'http://localhost:5000/api');
+
+        // Prefer featured products; fall back to the general product list
+        let list = [];
+        try {
+          const featuredRes = await axios.get(`${API_URL}/products/featured`);
+          list = featuredRes.data || [];
+        } catch (e) {
+          list = [];
+        }
+
+        if (!list || list.length === 0) {
+          const res = await axios.get(`${API_URL}/products?pageNumber=1`);
+          list = res.data?.products || [];
+        }
+
+        setShopProducts(list.slice(0, 8));
+      } catch (error) {
+        console.error('Error fetching homepage products:', error);
+        setShopProducts([]);
+      } finally {
+        setProductsLoading(false);
+      }
+    };
+
+    fetchHomeProducts();
   }, []);
 
   const whatsappUrl = `https://wa.me/923214203402?text=${encodeURIComponent('Hi! I want to order a gift from Mani Gift Center 🎁')}`;
@@ -113,29 +153,44 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Testimonials */}
-      <div className="py-14 sm:py-20 px-4">
+      {/* Shop Products Showcase */}
+      <div className="py-14 sm:py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <Reveal as="h2" className="font-display text-2xl sm:text-4xl font-bold text-center mb-10 sm:mb-14 text-ink-800">
-            What Our Customers Say
+          <Reveal as="h2" className="font-display text-2xl sm:text-4xl font-bold text-center mb-3 text-ink-800">
+            Shop Our Bestsellers
           </Reveal>
-          <Reveal grid className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {[
-              { text: "The money bouquet I ordered for my sister's eidi was stunning — better than the pictures!", author: 'Ayesha K.' },
-              { text: 'Nikkah booklet was so personalized and beautifully made. Everyone at the wedding loved it.', author: 'Hamna R.' },
-              { text: 'Ordered a cake bouquet last minute via WhatsApp and they delivered same day. Amazing service!', author: 'Bilal S.' },
-            ].map((testimonial, index) => (
-              <div
-                key={index}
-                className="clay p-7 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="flex items-center mb-4">
-                  <span className="text-primary-500 text-xl">★★★★★</span>
+          <Reveal as="p" delay={80} className="text-center text-ink-400 mb-10 sm:mb-14">
+            A sneak peek of what's trending right now — explore the full collection anytime
+          </Reveal>
+
+          {productsLoading ? (
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="bg-primary-50 rounded-2xl h-64 sm:h-72 animate-pulse"></div>
+              ))}
+            </div>
+          ) : shopProducts.length > 0 ? (
+            <Reveal grid className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+              {shopProducts.map((product) => (
+                <div key={product._id} className="hover:-translate-y-1 transition-transform duration-300">
+                  <ProductCard product={product} />
                 </div>
-                <p className="text-ink-700 mb-4 text-sm sm:text-base italic">"{testimonial.text}"</p>
-                <p className="font-bold text-ink-900">- {testimonial.author}</p>
-              </div>
-            ))}
+              ))}
+            </Reveal>
+          ) : (
+            <p className="text-center text-ink-400">New gifts coming soon — check back shortly!</p>
+          )}
+
+          <Reveal type="zoom" delay={120} className="flex justify-center mt-12 sm:mt-14">
+            <Link
+              to="/shop"
+              className="group relative inline-flex items-center gap-3 clay-btn text-ink-900 font-bold text-base sm:text-lg px-10 py-4 mobile-tap-target overflow-hidden"
+            >
+              <span className="relative z-10">Shop All Products</span>
+              <svg className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
           </Reveal>
         </div>
       </div>

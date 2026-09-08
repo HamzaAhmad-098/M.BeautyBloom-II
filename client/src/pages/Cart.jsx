@@ -5,6 +5,7 @@ import { FaTrash, FaPlus, FaMinus, FaShoppingBag, FaArrowLeft, FaExclamationTria
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { analytics } from '@/utils/analytics';
+import { sendOrderToWhatsApp } from '../utils/whatsappOrder';
 const Cart = () => {
   const { cartItems, cartTotal, itemsCount } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
@@ -380,12 +381,27 @@ const Cart = () => {
                     Remove Out of Stock Items
                   </button>
                 ) : (
-                  <Link
-                    to="/checkout"
-                    className="block w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:opacity-90 text-white text-center py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 mobile-tap-target"
+                  // NOTE: Checkout-form flow is temporarily disabled per current
+                  // WhatsApp-only ordering process. The <Link to="/checkout"> version
+                  // is kept below (commented) so it can be switched back on later.
+                  // <Link to="/checkout" className="...">Proceed to Checkout</Link>
+                  <button
+                    onClick={() => {
+                      sendOrderToWhatsApp({
+                        items: cartItems.map((item) => ({
+                          name: item.name || item.product?.name || 'Product',
+                          variant: item.variant,
+                          quantity: item.quantity || 1,
+                          price: item.price || (item.product?.discountPrice > 0 ? item.product.discountPrice : item.product?.price) || 0,
+                        })),
+                        total: totalPrice,
+                      });
+                    }}
+                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary-500 to-primary-600 hover:opacity-90 text-white text-center py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 mobile-tap-target"
                   >
-                    Proceed to Checkout
-                  </Link>
+                    <svg viewBox="0 0 32 32" width="20" height="20" fill="#fff"><path d="M16.004 3C9.375 3 4 8.373 4 15c0 2.34.65 4.53 1.78 6.4L4 29l7.78-1.75A11.9 11.9 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3z"/></svg>
+                    Order via WhatsApp
+                  </button>
                 )}
                 
                 <div className="flex items-center justify-center space-x-4 text-sm text-gray-600 mt-4">

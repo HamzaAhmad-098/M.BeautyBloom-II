@@ -6,6 +6,7 @@ import { FaStar, FaShippingFast, FaShieldAlt, FaUndo, FaHeart, FaShareAlt, FaMin
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { analytics } from '@/utils/analytics';
+import { sendOrderToWhatsApp } from '../utils/whatsappOrder';
 const ProductDetails = () => {
   
   const { id } = useParams();
@@ -136,14 +137,24 @@ useEffect(() => {
       toast.error('Not enough stock available');
       return;
     }
+    // Direct-to-WhatsApp order (checkout form is temporarily disabled).
+    // Cart is still updated in case the customer comes back to it later.
     dispatch(addToCart({
       product,
       quantity,
       variant: selectedVariant
     }));
-    // Buy Now skips the cart page and goes straight to checkout,
-    // where the order is saved and also sent to WhatsApp.
-    navigate('/checkout');
+
+    const price = product.discountPrice > 0 ? product.discountPrice : product.price;
+    sendOrderToWhatsApp({
+      items: [{
+        name: product.name,
+        variant: selectedVariant,
+        quantity,
+        price,
+      }],
+      total: price * quantity,
+    });
   };
 
   const handleQuantityChange = (type) => {
