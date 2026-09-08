@@ -27,7 +27,7 @@ const About = () => {
             <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Why Choose Us?</h2>
             <ul className="text-gray-600 mb-6 list-disc pl-5 space-y-2">
               <li>100% authentic products with verified suppliers</li>
-              <li>Free shipping on orders above Rs. 2000</li>
+              <li>Free shipping available on qualifying orders</li>
               <li>Easy returns within 14 days</li>
               <li>Expert beauty advice and recommendations</li>
               <li>Secure payment options</li>

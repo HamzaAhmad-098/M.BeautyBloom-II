@@ -377,6 +377,7 @@ const Cart = () => {
                           variant: item.variant,
                           quantity: item.quantity || 1,
                           price: item.price || (item.product?.discountPrice > 0 ? item.product.discountPrice : item.product?.price) || 0,
+                          url: `${window.location.origin}/product/${item.productId || item.product?._id || ''}`,
                         })),
                         total: totalPrice,
                       });

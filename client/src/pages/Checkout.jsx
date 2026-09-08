@@ -530,47 +530,22 @@ const Checkout = () => {
                         <p className="font-medium text-sm truncate">{item.name || item.product?.name}</p>
                         <p className="text-gray-500 text-sm">Qty: {item.quantity}</p>
                       </div>
-                      <div className="font-semibold">
-                        Rs. {(
-                          (item.price || 
-                           (item.product?.discountPrice > 0 ? item.product.discountPrice : item.product?.price) || 0) * 
-                          (item.quantity || 1)
-                        ).toLocaleString()}
+                      <div className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-1 rounded-full">
+                        Priced on WhatsApp
                       </div>
                     </div>
                   ))}
                 </div>
 
-                {/* Price Breakdown */}
-                <div className="space-y-2 pt-4 border-t">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Subtotal</span>
-                    <span>Rs. {itemsPrice.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Shipping</span>
-                    <span>{shippingPrice === 0 ? 'FREE' : `Rs. ${shippingPrice}`}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Tax (0%)</span>
-                    <span>Rs. {taxPrice.toLocaleString()}</span>
-                  </div>
-
-                  <div className="pt-4 border-t">
-                    <div className="flex justify-between text-lg font-bold">
-                      <span>Total</span>
-                      <span className="text-primary-600">Rs. {totalPrice.toLocaleString()}</span>
-                    </div>
+                {/* Price Breakdown hidden from customer */}
+                <div className="pt-4 border-t">
+                  <div className="flex justify-between text-lg font-bold">
+                    <span>Total</span>
+                    <span className="text-sm font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full">
+                      Confirmed on WhatsApp
+                    </span>
                   </div>
                 </div>
-
-                {shippingPrice > 0 && itemsPrice < 2000 && (
-                  <div className="p-3 bg-green-50 rounded-lg">
-                    <p className="text-sm text-green-700">
-                      Add Rs. {(2000 - itemsPrice).toLocaleString()} more for free shipping!
-                    </p>
-                  </div>
-                )}
               </div>
             </div>
           </div>

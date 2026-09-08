@@ -152,6 +152,7 @@ useEffect(() => {
         variant: selectedVariant,
         quantity,
         price,
+        url: `${window.location.origin}/product/${product._id}`,
       }],
       total: price * quantity,
     });

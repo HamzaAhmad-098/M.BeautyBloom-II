@@ -32,7 +32,7 @@ const FAQ = () => {
     {
       id: 2,
       question: 'Do you offer free shipping?',
-      answer: 'Yes! We offer free shipping on all orders above Rs. 2,000 within Pakistan. For orders below Rs. 2,000, shipping charges are Rs. 200.',
+      answer: 'Yes! Free shipping is available on qualifying orders within Pakistan — our team will confirm shipping charges for your order on WhatsApp.',
       category: 'shipping',
     },
     {
@@ -138,7 +138,7 @@ const FAQ = () => {
     { number: '24/7', label: 'Customer Support', icon: '⏰' },
     { number: '14', label: 'Day Returns', icon: '📦' },
     { number: '100%', label: 'Authentic Products', icon: '✅' },
-    { number: '2,000+', label: 'Free Shipping Threshold', icon: '🚚' },
+    { number: '💬', label: 'Priced on WhatsApp', icon: '🚚' },
   ];
 
   return (

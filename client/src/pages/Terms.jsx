@@ -131,20 +131,16 @@ const Terms = () => {
                   <h3 className="font-semibold mb-3">Shipping Costs</h3>
                   <ul className="space-y-2 text-sm">
                     <li className="flex justify-between">
-                      <span>Orders above Rs. 2,000</span>
-                      <span className="font-semibold text-green-600">FREE</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Orders below Rs. 2,000</span>
-                      <span className="font-semibold">Rs. 250</span>
+                      <span>Standard Shipping</span>
+                      <span className="font-semibold text-emerald-600">Confirmed on WhatsApp</span>
                     </li>
                     <li className="flex justify-between">
                       <span>Express Shipping</span>
-                      <span className="font-semibold">Rs. 500</span>
+                      <span className="font-semibold text-emerald-600">Confirmed on WhatsApp</span>
                     </li>
                     <li className="flex justify-between">
                       <span>Same-day Delivery </span>
-                      <span className="font-semibold">Rs. 350</span>
+                      <span className="font-semibold text-emerald-600">Confirmed on WhatsApp</span>
                     </li>
                   </ul>
                 </div>

@@ -21,6 +21,7 @@ export function buildWhatsAppMessage({ items = [], customer = {}, orderId, notes
   items.forEach((it, i) => {
     const variant = it.variant ? ` (${it.variant})` : '';
     lines.push(`${i + 1}. ${it.name}${variant} x${it.quantity}`);
+    if (it.url) lines.push(`   🔗 ${it.url}`);
   });
   lines.push('');
   if (customer.name || customer.phone || customer.email || customer.address) {
